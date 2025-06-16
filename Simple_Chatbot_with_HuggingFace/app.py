@@ -1,15 +1,15 @@
 from flask import Flask
 from flask_cors import CORS
 from bot import chatbot
-from flask import request
+from flask import request, render_template
 import json
 
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def home():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 @app.route('/chatbot', methods=['POST'])
 def handle_prompt():
